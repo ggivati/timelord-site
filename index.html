@@ -3,101 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimeLord | ניהול פעילות תרבות וקהילה חכם</title>
+    <title>TimeLord | ניהול תרבות וקהילה חכם</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Heebo', sans-serif; color: #4A4F54; scroll-behavior: smooth; }
-        .text-brand-orange { color: #F36B22; }
-        .bg-brand-orange { background-color: #F36B22; }
-        .bg-brand-charcoal { background-color: #4A4F54; }
+        body { font-family: 'Heebo', sans-serif; background-color: #1a1c1e; color: #ffffff; scroll-behavior: smooth; }
         
-        /* לוגואים נעים (Marquee) */
+        /* אפקטים של Bento */
+        .perspective-1000 { perspective: 1000px; }
+        .bento-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.05); }
+        .bento-card:hover { border-color: rgba(243, 107, 34, 0.4); transform: translateY(-5px); }
+        
+        /* אנימציית ריחוף לאלמנטים ב-UI המפורק */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.03); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 4s ease-in-out infinite 2s; }
+
+        /* לוגואים נעים - מותאם למצב כהה */
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(50%); }
         }
-        .marquee-content {
-            display: flex;
-            width: 200%;
-            animation: marquee 20s linear infinite;
-        }
-
-        /* אפקט התיקיות המרחפות */
-        .stacked-container { position: relative; height: 500px; }
-        .browser-frame {
-            border: 1px solid #e1e4e8;
-            border-radius: 8px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            overflow: hidden;
-            background: white;
-            position: absolute;
-            transition: all 0.5s ease;
-        }
-        .browser-header {
-            background: #f1f1f1;
-            padding: 8px 12px;
-            display: flex;
-            gap: 6px;
-        }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; }
-
-        /* מניפת דוחות */
-        .report-card {
-            position: absolute;
-            width: 320px;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer;
-        }
-        .report-card:hover {
-            transform: translateX(var(--offset)) rotate(0deg) scale(1.1) translateY(-40px) !important;
-            z-index: 50 !important;
-        }
+        .marquee-content { display: flex; width: 200%; animation: marquee 25s linear infinite; }
     </style>
 </head>
-<body class="bg-white">
+<body class="antialiased">
 
-    <header class="fixed w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+    <header class="fixed w-full bg-[#1a1c1e]/80 backdrop-blur-xl z-50 border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-10">
-                <img src="timeLord_Logo.jpg" alt="TimeLord Logo" class="h-12">
-                <nav class="hidden md:flex gap-8 text-sm font-medium">
-                    <a href="#features" class="hover:text-brand-orange transition">יתרונות</a>
-                    <a href="#file" class="hover:text-brand-orange transition">תיק פעילות</a>
-                    <a href="#reports" class="hover:text-brand-orange transition">דיווחים</a>
-                    <a href="#comparison" class="hover:text-brand-orange transition">למה TimeLord?</a>
+            <div class="flex items-center gap-12">
+                <img src="timeLord_Logo.jpg" alt="TimeLord Logo" class="h-10 brightness-110">
+                <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                    <a href="#features" class="hover:text-[#F36B22] transition">הפלטפורמה</a>
+                    <a href="#reports" class="hover:text-[#F36B22] transition">מרכז תובנות</a>
+                    <a href="#customers" class="hover:text-[#F36B22] transition">לקוחות</a>
                 </nav>
             </div>
-            <button class="bg-brand-orange text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition shadow-lg shadow-orange-200">
-                תאמו לי דמו קצר
+            <button class="bg-[#F36B22] text-white px-6 py-2.5 rounded-full font-bold hover:bg-orange-600 transition shadow-lg shadow-orange-900/20">
+                תיאום דמו
             </button>
         </div>
     </header>
 
-    <section class="pt-44 pb-20 px-6 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-5xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.1] mb-8">
-                הלוח שבו לכל פעילות יש <br><span class="text-brand-orange">תיק דיגיטלי חכם</span> משלה.
-            </h1>
-            <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-12">
-                ב-TimeLord כל שיבוץ בלוח – מחוג שבועי ועד אירוע שיא – הופך למקור האמת של הארגון. מקום אחד שמרכז את כל הפרטים, הדרישות והתיעוד.
-            </p>
-            
-            <div class="browser-frame max-w-5xl mx-auto relative z-10">
-                <div class="browser-header"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-                <img src="weekly_sites_view.png" alt="Weekly Sites View" class="w-full">
-            </div>
-        </div>
-    </section>
+    <main class="pt-32">
+        <section class="pb-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                    
+                    <div class="md:col-span-8 bg-[#2a2d30] rounded-[2.5rem] p-10 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center gap-12 bento-card">
+                        <div class="lg:w-1/2 relative z-10 text-center lg:text-right">
+                            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+                                הלוח שבו כל פעילות היא <span class="text-[#F36B22]">נכס דיגיטלי</span>.
+                            </h1>
+                            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                                ב-TimeLord אנחנו מפרקים את המורכבות של ניהול מרכזי תרבות לתיק חכם אחד שמרכז הכל.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <button class="bg-[#F36B22] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl shadow-orange-900/40">
+                                    תאמו לי דמו קצר
+                                </button>
+                                <button class="border border-white/10 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/5 transition">
+                                    למה TimeLord?
+                                </button>
+                            </div>
+                        </div>
 
-    <div class="py-16 bg-white overflow-hidden border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
-            <div class="inline-block bg-orange-50 text-brand-orange px-6 py-2 rounded-full font-bold text-lg mb-4">
-                92% מהמשתמשים מגדירים את TimeLord כמקור האמת המרכזי
+                        <div class="hidden lg:block lg:w-1/2 relative perspective-1000">
+                            <div class="w-full h-80 bg-[#1a1c1e] rounded-3xl border border-white/10 transform rotate-y-[-15deg] rotate-x-[5deg] shadow-[0_50px_100px_rgba(0,0,0,0.5)] relative p-6">
+                                
+                                <div class="absolute -top-10 -right-8 bg-[#3a3d40] p-4 rounded-2xl border border-orange-500/40 shadow-2xl animate-float">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-orange-500/20 text-orange-500 rounded-xl flex items-center justify-center font-bold">₪</div>
+                                        <div>
+                                            <div class="text-[10px] text-gray-400">תקציב אירוע</div>
+                                            <div class="text-sm font-bold">42,500</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="absolute top-24 -left-12 bg-[#3a3d40] p-4 rounded-2xl border border-blue-500/40 shadow-2xl animate-float-delayed">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center">📅</div>
+                                        <div>
+                                            <div class="text-[10px] text-gray-400">סטטוס חלל</div>
+                                            <div class="text-sm font-bold text-blue-400">משוריין</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4 opacity-30">
+                                    <div class="h-3 w-1/2 bg-white rounded-full"></div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="h-20 bg-white/5 rounded-2xl"></div>
+                                        <div class="h-20 bg-white/5 rounded-2xl"></div>
+                                    </div>
+                                    <div class="h-16 bg-orange-500/10 border border-orange-500/20 rounded-2xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-4 bg-[#2a2d30] rounded-[2.5rem] p-8 flex flex-col justify-between bento-card">
+                        <div class="text-4xl">📊</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">92% מקור אמת</h3>
+                            <p class="text-gray-500">מהמשתמשים מגדירים את המערכת כמרכז התפעול הבלעדי של הארגון.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-4 bg-[#F36B22] rounded-[2.5rem] p-8 flex flex-col justify-between text-white shadow-2xl shadow-orange-900/20 bento-card border-none">
+                        <div class="text-4xl text-white">🛡️</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">שקט תפעולי</h3>
+                            <p class="text-white/80">מניעת התנגשויות ושימור ידע ארגוני בחירום ובשגרה.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-8 bg-[#2a2d30] rounded-[2.5rem] p-8 flex items-center gap-8 bento-card">
+                        <div class="hidden sm:block text-5xl opacity-20">📂</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">כל הפרטים בתיק אחד</h3>
+                            <p class="text-gray-400">מהדרישות הטכניות ועד לתמחור והסיכום – הכל שמור בתוך הפעילות, נגיש ומתועד.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <div class="marquee">
-            <div class="marquee-content flex gap-20 items-center text-2xl font-bold text-gray-300">
+        </section>
+
+        <div class="py-12 bg-transparent border-y border-white/5 overflow-hidden">
+            <div class="marquee">
+                <div class="marquee-content flex gap-16 items-center text-xl font-bold text-gray-600 grayscale opacity-50">
                 <span>תיאטרון ירושלים</span> 
 				<span>היכל התרבות אשדוד</span> 
 				<span>מרכז השחר גבעתיים</span>
@@ -127,168 +166,10 @@
 				<span>בית העם ראשון לציון</span>
 				<span>עיריית קרית מוצקין</span>
 				<span>בית יד לבנים נס ציונה</span>			
-            </div>
-        </div>
-    </div>
-
-    <section id="features" class="py-24 px-6 bg-gray-50">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-            <div class="bg-white p-8 rounded-2xl shadow-sm">
-                <div class="text-4xl mb-4">📅</div>
-                <h3 class="text-xl font-bold mb-3">לוח פעילות אחד לכולם</h3>
-                <p class="text-gray-500">תמונת מצב אחת שמתעדכנת בזמן אמת. כולם יודעים מה קורה, מתי ואיפה.</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm">
-                <div class="text-4xl mb-4">📂</div>
-                <h3 class="text-xl font-bold mb-3">תיק פעילות דיגיטלי מלא</h3>
-                <p class="text-gray-500">מהדרישות הטכניות ועד לתמחור והסיכום – הכל שמור בתוך הפעילות, נגיש ומתועד.</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm">
-                <div class="text-4xl mb-4">🛡️</div>
-                <h3 class="text-xl font-bold mb-3">המערכת ששומרת עליכם</h3>
-                <p class="text-gray-500">מניעת התנגשויות בחללים, כפל שיבוצים ושמירה על הזיכרון הארגוני בחירום.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="file" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-4xl font-bold mb-6">ירידה לפרטים בלי לאבד את הצפון</h2>
-                <p class="text-lg text-gray-600 mb-8">
-                    תיק הפעילות של TimeLord מרכז את כל מה שחשוב: החל מהפקה וזמנים ועד לניהול משימות, קבצים ותמחיר מלא. המידע זורם אוטומטית בין המחלקות השונות.
-                </p>
-                <div class="bg-brand-charcoal text-white p-6 rounded-xl">
-                    <h4 class="font-bold mb-2">הזיכרון ששומר עליכם, גם כשתוכניות משתנות</h4>
-                    <p class="text-sm opacity-80">ב-TimeLord, גם פעילויות שבוטלו נשארות מתועדות. זהו כלי קריטי להפקת דוחות בדיעבד או הגשת בקשות לפיצויים בחירום.</p>
-                </div>
-            </div>
-            <div class="stacked-container">
-                <div class="browser-frame w-[90%] top-0 right-0 z-10 opacity-70 scale-95 grayscale-[50%]">
-                    <div class="browser-header"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-                    <img src="event_details_tasks_files_pricing.png" alt="Details Part 2">
-                </div>
-                <div class="browser-frame w-[90%] bottom-0 left-0 z-20 shadow-2xl">
-                    <div class="browser-header"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-                    <img src="event_details_general_times_requirements.jpg" alt="Details Part 1">
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="comparison" class="py-24 bg-white px-6 border-y border-gray-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">למה לא אקסל?</h2>
-            <div class="overflow-hidden rounded-2xl border border-gray-200 shadow-xl">
-                <table class="w-full text-right border-collapse">
-                    <thead class="bg-brand-charcoal text-white">
-                        <tr>
-                            <th class="p-5">היכולת</th>
-                            <th class="p-5 text-center">יומן רגיל / אקסל</th>
-                            <th class="p-5 text-center bg-brand-orange">TimeLord</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        <tr>
-                            <td class="p-5 font-bold">מניעת כפל שיבוצים</td>
-                            <td class="p-5 text-center text-red-500 text-xl">✕</td>
-                            <td class="p-5 text-center text-green-500 text-xl font-bold">✔</td>
-                        </tr>
-                        <tr>
-                            <td class="p-5 font-bold">תיק אירוע דיגיטלי מלא</td>
-                            <td class="p-5 text-center text-red-500 text-xl">✕</td>
-                            <td class="p-5 text-center text-green-500 text-xl font-bold">✔</td>
-                        </tr>
-                        <tr>
-                            <td class="p-5 font-bold">הפקת דוחות בלחיצת כפתור</td>
-                            <td class="p-5 text-center text-red-500 text-xl">✕</td>
-                            <td class="p-5 text-center text-green-500 text-xl font-bold">✔</td>
-                        </tr>
-                        <tr>
-                            <td class="p-5 font-bold">שימור ידע ארגוני בחירום</td>
-                            <td class="p-5 text-center text-red-500 text-xl">✕</td>
-                            <td class="p-5 text-center text-green-500 text-xl font-bold">✔</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-	<section id="reports" class="py-24 bg-gray-900 text-white overflow-hidden">
-		<div class="max-w-7xl mx-auto px-6 text-center mb-20">
-			<h2 class="text-4xl font-bold mb-4">מחולל הדוחות: המידע שלכם, התובנות שלנו</h2>
-			<p class="text-gray-400">כל נתון שמוזן למערכת הופך אוטומטית לבר-דיווח החל מדוחות תפעוליים ועד דוחות כספיים ודיווחים רגולטוריים.</p>
-		</div>
-
-		<div class="relative h-[600px] flex justify-center items-end pb-20">
-			
-			<div class="report-card" style="--rotate: -15deg; --offset: -300px; transform: translateX(-300px) rotate(-15deg); z-index: 10;">
-				<div class="bg-brand-orange text-[10px] px-2 py-1 rounded-t-md text-center font-bold">דוח תפעולי</div>
-				<div class="browser-mockup">
-					<img src="reports_external_requirements.png" alt="דוח תפעולי" class="w-full h-full object-top object-cover">
-				</div>
-			</div>
-
-			<div class="report-card" style="--rotate: -7deg; --offset: -150px; transform: translateX(-150px) rotate(-7deg); z-index: 20;">
-				<div class="bg-brand-orange text-[10px] px-2 py-1 rounded-t-md text-center font-bold">דוח תקציבי</div>
-				<div class="browser-mockup">
-					<img src="reports_incomes.png" alt="דוח תקציבי" class="w-full h-full object-top object-cover">
-				</div>
-			</div>
-
-			<div class="report-card" style="--rotate: 0deg; --offset: 0px; transform: translateX(0px) rotate(0deg); z-index: 30;">
-				<div class="bg-brand-orange text-[10px] px-2 py-1 rounded-t-md text-center font-bold">ניהול משימות</div>
-				<div class="browser-mockup border-4 border-brand-orange">
-					<img src="reports_departmental_tasks.png" alt="ניהול משימות" class="w-full h-full object-top object-cover">
-				</div>
-			</div>
-
-			<div class="report-card" style="--rotate: 7deg; --offset: 150px; transform: translateX(150px) rotate(7deg); z-index: 20;">
-				<div class="bg-brand-orange text-[10px] px-2 py-1 rounded-t-md text-center font-bold">הכנסות מלקוחות</div>
-				<div class="browser-mockup">
-					<img src="reports_customer_income.png" alt="הכנסות מלקוחות" class="w-full h-full object-top object-cover">
-				</div>
-			</div>
-
-			<div class="report-card" style="--rotate: 15deg; --offset: 300px; transform: translateX(300px) rotate(15deg); z-index: 10;">
-				<div class="bg-brand-orange text-[10px] px-2 py-1 rounded-t-md text-center font-bold">דיווחים לאקום</div>
-				<div class="browser-mockup">
-					<img src="reports_akum_export.png" alt="דוח משרד התרבות" class="w-full h-full object-top object-cover">
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-
-    <section class="py-24 bg-white px-6">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-            <div class="bg-gray-50 p-10 rounded-3xl relative">
-                <span class="text-6xl text-brand-orange absolute top-4 left-4 opacity-20">"</span>
-                <p class="text-xl italic mb-6">"מאז שעברנו ל-TimeLord, נחסך לנו המון זמן עבודה והכל הרבה יותר שקוף לצוות. הדיווחים מוכנים בלחיצת כפתור."</p>
-                <div class="font-bold text-brand-charcoal">מנהלת תפעול, היכל תרבות מוביל</div>
-            </div>
-            <div class="bg-gray-50 p-10 rounded-3xl relative">
-                <span class="text-6xl text-brand-orange absolute top-4 left-4 opacity-20">"</span>
-                <p class="text-xl italic mb-6">"השקט לדעת שכל פעילות מתועדת וששום דבר לא נופל בין הכיסאות. היא פשוט עמוד השדרה של התפעול אצלנו."</p>
-                <div class="font-bold text-brand-charcoal">רכזת תרבות וקהילה</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-brand-charcoal text-white text-center">
-        <h2 class="text-4xl font-bold mb-6">עוברים לנהל בראש שקט</h2>
-        <p class="text-xl opacity-80 mb-10">הצטרפו למנהלי התרבות שסוגרים את החודש בביטחון מלא.</p>
-        <button class="bg-brand-orange text-white px-12 py-5 rounded-full font-extrabold text-xl hover:bg-orange-600 transition shadow-2xl">
-            תאמו לי דמו קצר
-        </button>
-    </section>
-
-    <footer class="py-12 bg-gray-50 text-center text-sm text-gray-400">
-        <img src="timeLord_Logo.jpg" alt="Logo" class="h-8 mx-auto mb-4 opacity-50">
-        <p>© 2026 TimeLord. המערכת המובילה לניהול מוסדות תרבות וקהילה.</p>
-    </footer>
+    </main>
 
 </body>
 </html>
