@@ -51,38 +51,8 @@ body { font-family: 'Heebo', sans-serif; background-color: #161819; color: #ffff
 </style>
 </head>
 <body class="antialiased">
-  <div class="relative w-full overflow-hidden bg-[#161819]">
-    <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="glow">
-                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
 
-        <g stroke="#333" stroke-width="1" fill="none">
-            <path d="M0 100 h200 v150 h400 v-100 h200" />
-            <path d="M1200 800 h-300 v-200 h-400 v100" />
-            <path d="M100 900 v-200 h300 v-300" />
-            <path d="M1400 300 h-200 v400" />
-        </g>
-
-        <g stroke="#F36B22" stroke-width="1.5" fill="none">
-            <path d="M400 0 v150 h-50" />
-            <circle cx="350" cy="150" r="3" fill="#F36B22" filter="url(#glow)" />
-            
-            <path d="M1000 1000 v-150 h100" />
-            <circle cx="1100" cy="850" r="3" fill="#F36B22" filter="url(#glow)" />
-            
-            <path d="M0 500 h150 v-50" />
-            <circle cx="150" cy="450" r="3" fill="#F36B22" filter="url(#glow)" class="animate-pulse" />
-        </g>
-    </svg>
-    <div class="bento-container relative z-10">
-
+    <div class="bento-container">
         
 		<div class="col-span-12 lg:col-span-8 lg:row-span-2 bento-item p-12 flex flex-col lg:flex-row items-center gap-12">
     <div class="lg:w-1/2 z-20 text-right">
@@ -226,6 +196,6 @@ body { font-family: 'Heebo', sans-serif; background-color: #161819; color: #ffff
         </div>
 
     </div>
-  </div>
+
 </body>
 </html>
