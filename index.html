@@ -196,22 +196,80 @@
 		<div class="absolute -bottom-12 -left-12 w-32 h-32 bg-[#F36B22]/10 rounded-full blur-3xl"></div>
 	</div>
         
-        <div class="col-span-12 md:col-span-4 bento-item p-8">
-            <h4 class="text-gray-500 text-xs font-black uppercase tracking-widest mb-6">Resource Utilization</h4>
-            <div class="flex items-end gap-2.5 h-24 mb-6">
-                <div class="flex-1 bg-white/5 h-[40%] rounded-t-xl"></div>
-                <div class="flex-1 bg-white/5 h-[65%] rounded-t-xl"></div>
-                <div class="flex-1 bg-[#F36B22] h-[92%] rounded-t-xl shadow-[0_0_20px_rgba(243,107,34,0.4)]"></div>
-                <div class="flex-1 bg-white/10 h-[55%] rounded-t-xl"></div>
-                <div class="flex-1 bg-white/5 h-[75%] rounded-t-xl"></div>
-                <div class="flex-1 bg-white/5 h-[35%] rounded-t-xl"></div>
-            </div>
-            <div class="flex justify-between items-end">
-                <span class="font-bold text-white text-lg">מחולל הדוחות</span>
-                <span class="text-[10px] text-gray-600 font-mono tracking-tighter">+12.4% TRENDING</span>
-            </div>
-        </div>
+	 <div class="col-span-12 bento-item p-10 flex flex-col items-center justify-between group overflow-hidden bg-[#232629] border border-white/5">
+		
+		<div class="text-center mb-8 relative z-10">
+			<h3 class="text-3xl lg:text-4xl font-black text-white mb-4 Heebo">
+				מחולל הדוחות: <span class="text-[#F36B22]">המידע שלכם, התובנות שלנו</span>
+			</h3>
+			<p class="text-gray-400 text-lg max-w-2xl mx-auto Heebo">
+				כל נתון שמוזן למערכת – שעות, תקציב או משימות – מתגבש אוטומטית לדו"ח מקצועי בלחיצת כפתור אחת.
+			</p>
+		</div>
 
+		<div class="relative w-full max-w-4xl h-64 flex items-center justify-center">
+			
+			<svg viewBox="0 0 800 200" class="absolute inset-0 w-full h-full pointer-events-none">
+				<defs>
+					<filter id="glow-orange">
+						<feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+						<feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+					</filter>
+					
+					<circle id="dot" r="2" fill="#F36B22">
+						<animateMotion dur="3s" repeatCount="indefinite" path="M0,0 H100" />
+					</circle>
+				</defs>
+
+				<g stroke="rgba(243, 107, 34, 0.2)" stroke-width="1" fill="none">
+					<path d="M150 40 Q 300 40, 400 100" />
+					<path d="M150 80 Q 300 80, 400 100" />
+					<path d="M150 120 Q 300 120, 400 100" />
+					<path d="M150 160 Q 300 160, 400 100" />
+				</g>
+
+				<g stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" fill="none">
+					<path d="M400 100 Q 500 40, 650 40" />
+					<path d="M400 100 Q 500 100, 650 100" />
+					<path d="M400 100 Q 500 160, 650 160" />
+				</g>
+			</svg>
+
+			<div class="relative z-20 flex flex-col items-center">
+				<div class="text-[10px] text-orange-500 font-bold mb-2 uppercase tracking-tighter animate-pulse">לחיצת כפתור</div>
+				<div class="w-20 h-20 bg-[#F36B22] rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(243,107,34,0.6)] border-4 border-white/10 group-hover:scale-110 transition-transform cursor-pointer">
+					<svg viewBox="0 0 24 24" class="w-10 h-10 fill-white">
+						<path d="M12 2v20M5 15l7 7 7-7" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</div>
+			</div>
+
+			<div class="absolute left-10 space-y-8 text-left opacity-40 group-hover:opacity-100 transition-opacity">
+				<div class="text-xs font-bold text-white Heebo">שעות פעילות</div>
+				<div class="text-xs font-bold text-white Heebo">עלויות</div>
+				<div class="text-xs font-bold text-white Heebo">סטטוס משימות</div>
+				<div class="text-xs font-bold text-white Heebo">נתונים תפעוליים</div>
+			</div>
+
+			<div class="absolute right-10 space-y-12 text-right opacity-40 group-hover:opacity-100 transition-opacity">
+				<div class="flex items-center gap-3 justify-end">
+					<span class="text-xs font-bold text-orange-400 Heebo">דוח תפעולי</span>
+					<div class="w-8 h-10 bg-white/5 border border-white/10 rounded-md flex items-center justify-center text-[10px]">📊</div>
+				</div>
+				<div class="flex items-center gap-3 justify-end">
+					<span class="text-xs font-bold text-orange-400 Heebo">דוח כספי</span>
+					<div class="w-8 h-10 bg-white/5 border border-white/10 rounded-md flex items-center justify-center text-[10px]">💰</div>
+				</div>
+				<div class="flex items-center gap-3 justify-end">
+					<span class="text-xs font-bold text-orange-400 Heebo">דיווח רגולטורי</span>
+					<div class="w-8 h-10 bg-white/5 border border-white/10 rounded-md flex items-center justify-center text-[10px]">⚖️</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="absolute -bottom-24 w-full h-48 bg-[#F36B22]/5 blur-3xl rounded-full"></div>
+	</div>
+ 
         <div class="col-span-12 md:col-span-4 lg:row-span-2 bg-[#F36B22] rounded-[3rem] p-10 flex flex-col justify-between text-white relative group overflow-hidden border-none shadow-2xl shadow-orange-900/20">
             <div class="z-10">
                 <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-10 backdrop-blur-md border border-white/30 group-hover:scale-110 transition-transform">
