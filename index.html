@@ -116,22 +116,36 @@
             </div>
         </div>
 
-        <div class="col-span-12 md:col-span-4 bento-item p-8 flex flex-col justify-between">
-            <div class="flex justify-between items-start">
-                <div class="w-16 h-8 opacity-40">
-                    <svg viewBox="0 0 100 40" class="w-full h-full">
-                        <path d="M0 35 Q 25 35, 50 15 T 100 5" fill="none" stroke="#F36B22" stroke-width="3" />
-                        <circle cx="100" cy="5" r="4" fill="#F36B22" class="animate-ping" />
+        <div class="col-span-12 md:col-span-4 bento-item p-10 flex flex-col justify-between group overflow-hidden border border-white/5 bg-[#232629]">
+            
+            <svg class="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 20h40v40M150 0v30h50M300 100v-20h-40" stroke="white" fill="none" stroke-width="0.5" />
+                <circle cx="40" cy="20" r="1.5" fill="#F36B22" />
+                <circle cx="260" cy="80" r="1.5" fill="#F36B22" />
+            </svg>
+        
+            <div class="flex justify-between items-start relative z-10">
+                <div class="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center border border-orange-500/20 shadow-[0_0_20px_rgba(243,107,34,0.1)] group-hover:scale-110 transition-transform">
+                    <svg viewBox="0 0 24 24" class="w-8 h-8 fill-none stroke-[#F36B22] stroke-[1.5]">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="M12 18V8" class="animate-pulse" />
                     </svg>
                 </div>
-                <span class="text-[10px] text-orange-500 font-mono">CONFIDENCE_V1</span>
             </div>
-            <div>
-                <h3 class="text-4xl font-black text-white mb-2 Heebo">92% מהמשתמשים</h3>
-                <p class="text-gray-400 text-sm Heebo">מגדירים את TimeLord כמקור האמת המרכזי של הארגון.</p>
+        
+            <div class="relative z-10 mt-8">
+                <h3 class="leading-tight Heebo">
+                    <span class="text-7xl lg:text-8xl font-black text-[#F36B22] block mb-4 drop-shadow-[0_0_30px_rgba(243,107,34,0.3)]">92%</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white block leading-snug">
+                        מהמשתמשים מגדירים את TimeLord כמקור האמת המרכזי בארגון.
+                    </span>
+                </h3>
+                <p class="text-gray-500 mt-4 text-sm Heebo">מבוסס על סקר שביעות רצון לקוחות B2B לשנת 2026.</p>
             </div>
+        
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-[#F36B22]/10 rounded-full blur-3xl"></div>
         </div>
-
+        
         <div class="col-span-12 md:col-span-4 bento-item p-8">
             <h4 class="text-gray-500 text-xs font-black uppercase tracking-widest mb-6">Resource Utilization</h4>
             <div class="flex items-end gap-2.5 h-24 mb-6">
@@ -204,3 +218,4 @@
 
 </body>
 </html>
+
